@@ -1,0 +1,15 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= talking_talk_path(@user.weibos) %>">
+    <strong id="talking" class="stat">
+      <%#= @talk.talking.count %>
+    </strong>
+    我的评论
+  </a>
+  <a href="<%= talked_talk_path(@user.weibos) %>">
+    <strong id="talked" class="stat">
+      <%#= @talk.talked.count %>
+    </strong>
+    评论我的
+  </a>
+</div>

@@ -1,0 +1,40 @@
+<% if logged_in? %>
+    <div class="row">
+      <aside class="col-md-4">
+
+          <section class="user_info">
+            <%= render 'shared/user_info' %><br>
+          </section>
+
+          <section class="stats">
+            <%= render 'shared/stats' %>
+            <%= render 'shared/pl' %>
+          </section>
+
+          <section class="weibo_form">
+            <%= render 'shared/weibo_form' %>
+          </section>
+      </aside>
+      <div class="col-md-8">
+        <h3>微博</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    </div>
+<% else %>
+
+<div class="center jumbotron">
+  <h1>欢迎来到 GUMP　博客</h1>
+
+  <h2>
+    这是首页
+    <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+
+  <%= link_to "现在注册！", 'new', class: 'btn btn-lg btn-primary' %>
+  <%= link_to "现在登录！", 'login', class: 'btn btn-lg btn-primary' %>
+</div>
+<%= link_to image_tag('svg.jpeg', alt: "Rails logo", width: '200'),
+            'https://rubyonrails.org/' %>
+<%#= link_to image_tag('kitten.jpg', alt: "i am a cat"), '#' %>
+<% end %>

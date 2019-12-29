@@ -1,0 +1,26 @@
+<% provide(:title,'Log in') %>
+<h1>登录</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%#= form_for(url: login_path,scope: :sessions,local: true) do |f| %>
+
+    <%#= f.label :邮件 %>
+    <%#= f.email_filed :email,class: 'from-control' %>
+
+    <%#= f.label :密码 %>
+    <%#= f.password_filed :password,class: 'from-control' %>
+
+    <%#= f.submit '登录',class: 'btn btn-primary' %>
+    <%# end %>
+    <%= form_tag("/login",scope: :sessions, local: true) do %>
+      <%= label_tag("邮件") %>
+      <%= text_field_tag(:email) %>
+      <%= label_tag("密码") %>
+      <%= password_field_tag(:password) %>
+
+      <%= submit_tag("登录",class: 'btn btn-primary') %>
+    <% end %>
+    <p></p><%= link_to ' 新用户？ 现在注册',new_path %>
+  </div>
+</div>

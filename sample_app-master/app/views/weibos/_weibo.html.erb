@@ -1,0 +1,30 @@
+<li id="weibo-<%= weibo.id %>" class="list-group-item list-group-item-info">
+  <%#= link_to gravatar_for(weibo.user, size: 50), weibo.user %>
+  <div style="display: inline-block">
+    <img src="/assets/svg.jpeg" style="display: block;width: 50px;height: 50px">
+    <span class="user"><%= link_to weibo.user.name, weibo.user %></span>
+  </div>
+
+  <div style="display: inline-block">
+    <span class="content" style="margin-left: 0px;"><%= weibo.content %></span>
+    <span class="timestamp">
+    发布于<%= time_ago_in_words(weibo.created_at) %>前
+      <% if current_user?(weibo.user) %>
+      <%= link_to "删除", weibo, method: :delete,
+                  data: {confirm: "You sure?"} %>
+    <% end %>
+  </span>
+  </div>
+  <br>
+  <section class="talk">
+    <%= form_for(@talk) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_area :content, placeholder: "分享你的评论..." %>
+      </div>
+      <%= f.hidden_field :weibo_id, :value => weibo.id %>
+      <%= f.submit "评论", class: "btn btn-primary" %>
+    <% end %>
+  </section>
+</li>
+<br><br>

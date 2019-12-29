@@ -1,0 +1,7 @@
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<img src="/assets/svg.jpeg" style="display: block;width: 100px;height: 100px"><br>
+
+<h1><%= current_user.name %></h1>
+<span><%= link_to "查看我的主页", current_user %></span>
+<span><%= current_user.weibos.count%>条微博</span>
+<!--<img src="assets/svg.jpeg" style="display: block;width: 100px;height: 100px">-->

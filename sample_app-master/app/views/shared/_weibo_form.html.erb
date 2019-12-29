@@ -1,0 +1,7 @@
+<%= form_for(@weibo) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "分享今天的新鲜事..." %>
+  </div>
+  <%= f.submit "发布", class: "btn btn-primary" %>
+<% end %>

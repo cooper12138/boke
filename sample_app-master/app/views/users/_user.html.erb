@@ -1,0 +1,15 @@
+<li>
+
+  <ul style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+    <li><img src="/assets/svg.jpeg" style="display: block;width: 100px;height: 100px"></li>
+    <li><%= link_to user.name, user %></li>
+    <li><%= link_to user.email, user %></li>
+    <li>
+      <% if current_user.admin? && !current_user?(user) %>
+         <%= link_to "删除", user,method: :delete,
+                      data:{confirm:"确定删除?"}%>
+      <% end %>
+    </li>
+  </ul>
+  <%#= gravatar_for user, size: 50 %>
+</li>

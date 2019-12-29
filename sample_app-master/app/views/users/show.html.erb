@@ -1,0 +1,59 @@
+<!--<%#= @user.name %>,<%#= @user.email %>-->
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <img src="/assets/svg.jpeg" style="display: block;width: 100px;height: 100px"><br>
+        <%#= gravatar_for (@user) %>
+        <%= @user.name %><br><br>
+        <%= @user.email %>
+      </h1>
+    </section>
+
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <%= render 'shared/pl' %>
+    </section>
+
+    <%= render 'follow_form' if logged_in? %>
+  </aside>
+
+    <section class="col-md-8">
+      <h2>我的微博</h2>
+      <%# Weibo.count %>
+      <ul class="list-group ">
+
+      <% @weibos.each do |weibo| %>
+          <li id="weibo-<%= weibo.id %>" class="list-group-item list-group-item-success">
+            <%#= link_to gravatar_for(weibo.user, size: 50), weibo.user %>
+
+            <span class="user"><%= link_to weibo.user.name, weibo.user %>:</span>
+            <span class="content"><%= weibo.content %></span>
+            <span class="timestamp" style="float: right">
+
+            发布于<%= time_ago_in_words(weibo.created_at) %>前
+              <% if current_user?(weibo.user) %>
+              <%= link_to "删除", weibo, method: :delete,
+                  data: { confirm: "You sure?" } %>
+              <% end %>
+
+            </span><br>
+          </li>
+          <li class="list-group-item list-group-item-info">
+
+            <% weibo.talks.each do |t| %>
+              <p ><span class="user" style="padding-left: 30px;"><%= link_to weibo.user.name,weibo.user %>:</span>
+              <span class="content"><%= t.content %></span>
+              <span class="timestamp"  style="float: right">
+             评论于<%= time_ago_in_words(t.created_at) %>前
+              </span> </p>
+            <% end %>
+
+          </li>
+          <br>
+      <% end %>
+      </ul>
+    </section>
+
+</div>

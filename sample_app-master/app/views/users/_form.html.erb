@@ -1,0 +1,17 @@
+<%= form_for(@user) do |f|%>
+  <%= render 'shared/error_messages',object:f.object %>
+
+  <%= f.label :姓名 %>
+  <%= f.text_field :name,class: 'from-control'%>
+
+  <%= f.label :邮件 %>
+  <%= f.email_field :email,class: 'from-control' %>
+
+  <%= f.label :密码 %>
+  <%= f.password_field :password,class: 'from-control' %>
+
+  <%= f.label :重复密码 %>
+  <%= f.password_field :password_confirmation,class: 'from-control' %>
+
+  <%= f.submit '确认',class:'btn btn-primary'%>
+<% end %>
